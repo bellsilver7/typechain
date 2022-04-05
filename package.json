@@ -1,0 +1,13 @@
+{
+  "name": "typechain",
+  "version": "1.0.0",
+  "description": "Learning Typescript by making a BLockchain with it",
+  "main": "index.js",
+  "repository": "https://github.com/bellsilver7/typechain",
+  "author": "bellsilver7@gmail.com",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js",
+    "prestart": "tsc"
+  }
+}
