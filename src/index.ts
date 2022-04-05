@@ -1,9 +1,19 @@
+import * as CryptoJS from "crypto-js"; // hash 를 계산하기 위함
+
 class Block {
   public index: number;
   public hash: string;
   public previousHash: string;
   public data: string;
   public timestamp: number;
+
+  static caclulateBlockHash = (
+    index: number,
+    previousHash: string,
+    timestamp: number,
+    data: string
+  ): string =>
+    CryptoJS.SHA256(index + previousHash + timestamp + data).toString();
 
   constructor(
     index: number,
@@ -27,12 +37,13 @@ const genesisBlock: Block = new Block(
   "Hello",
   123456
 );
-
 // array of blocks!
-let blockchain: [Block] = [genesisBlock];
+let blockchain: Block[] = [genesisBlock];
 
-blockchain.push("stuff");
+const getBlockchain = (): Block[] => blockchain;
 
-console.log(blockchain);
+const getLatestBlock = (): Block => blockchain[blockchain.length - 1];
+
+const getNewTimeStamp = (): number => Math.round(new Date().getTime() / 1000);
 
 export {};
